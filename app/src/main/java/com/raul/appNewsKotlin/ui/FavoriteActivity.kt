@@ -1,6 +1,7 @@
 package com.raul.appNewsKotlin.ui
 
 import android.content.Intent
+import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,8 @@ import com.raul.appNewsKotlin.presenter.ViewHome
 import com.raul.appNewsKotlin.presenter.favorites.FavoritePresenter
 import com.raul.appnewskotlin.R
 import kotlinx.android.synthetic.main.activity_favorite.*
+import kotlinx.android.synthetic.main.activity_favorite.rvProgressBar
+import kotlinx.android.synthetic.main.activity_main.*
 
 class FavoriteActivity : AbstractActivity(), ViewHome.Favorite {
 
@@ -74,13 +77,11 @@ class FavoriteActivity : AbstractActivity(), ViewHome.Favorite {
         with(rvFavorites){
             adapter = mainAdapter
             layoutManager = LinearLayoutManager(this@FavoriteActivity)
-            addItemDecoration(
-                DividerItemDecoration(
-                this@FavoriteActivity, DividerItemDecoration.VERTICAL
-            )
-            )
         }
+
+        rvProgressBar.visibility = View.INVISIBLE
     }
+
 
     private fun clickAdapter(){
         mainAdapter.setOnClickListener { article ->
